@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="py-5 text-center">
+
+    <h2>Reporte de horas trabajadas</h2>
+    <p class="lead">Este reporte le permite al tecnico de HandyMan calcular las horas trabajadas segun la semana
+      seleccionada.</p>
+  </div>
+
+  <div class="row">
+
+
+
+    <div class="col-md-12 order-md-1">
+
+      <h4 class="mb-3">Reporte de horas laboradas segun la semana seleccionada.</h4>
+      <div class="needs-validation" id="needs-validation" novalidate="">
+
+        <br>
+        <h6 class="mb-3">Semana del año actual : {{ semanaActual }}</h6>
+        <div class="row">
+
+          <div class="col-md-6 ">
+            <div class="form-group row">
+              <label for="example-datetime-local-input" class="col-4 col-form-label">
+                <li class="fa fa-id-card"></li>&nbsp;Doc del Tecnico
+              </label>
+              <div class="col-7">
+                <input type="text" class="form-control" [(ngModel)]="documentoTecnico" placeholder="" value=""
+                  required="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 ">
+            <div class="form-group row">
+              <label for="example-datetime-local-input" class="col-4 col-form-label">
+                <li class="fa fa-calendar"></li>&nbsp;Semana del año
+              </label>
+              <div class="col-6">
+                <input type="number" min="1" max="521429" class="form-control" name="semanaAno" [(ngModel)]="seleccion"
+                  placeholder="" value="" required="">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-1">
+            <button class="btn btn-primary btn-lg btn-block" (click)="generarReporte()">
+              <li class="fa fa-folder-open"></li>&nbsp;Generar Reporte
+            </button>
+
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <div id="smg">
+          <div class="bd-example">
+            <table class="table" *ngIf="validacionReporte">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Horas Diurnas</th>
+                  <th scope="col">Horas Nocturnas</th>
+                  <th scope="col">Dominicales</th>
+                  <th scope="col">Horas Diurnas Extra</th>
+                  <th scope="col">Horas Nocturnas Extra</th>
+                  <th scope="col">Dominicales Extra</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{horasDiurnas }}</td>
+                  <td>{{horasNocturnas }}</td>
+                  <td>{{horaDominicales }}</td>
+                  <td>{{horasDiurnaExtra }}</td>
+                  <td>{{horasNocturnasExtra }}</td>
+                  <td>{{horaDominicalesExtra }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="alertValidacion" #alert id=""
+            class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlertValidacion()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Error! </strong> Actualmente no hay reportes para los parametros ingresados.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

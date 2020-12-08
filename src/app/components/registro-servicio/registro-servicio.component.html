@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="py-5 text-center">
+
+    <h2>Reporte de servicio</h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has
+      a validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Tecnico:</span>
+        <span class="badge badge-secondary badge-pill"><li class="fa fa-id-card fa-2x"></li></span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{nombreTecnico}}</h6>
+            <small class="text-muted">Nombre del tecnico</small>
+          </div>
+
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{documentoTecnico}}</h6>
+            <small class="text-muted">Documento</small>
+          </div>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="col-md-9 order-md-1">
+      <h4 class="mb-3">Registro de servicios.</h4>
+      <div class="needs-validation" id="needs-validation" novalidate="">
+        <div class="mb-3">
+          <label for="username">Documento de identificacion del tecnico. </label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Validacion de documento</span>
+            </div>
+            <input type="text" (change)="validacion_documento()" [(ngModel)]="documentoTecnico"
+              ng-keyup="$event.keyCode == 13 ? validacion_documento() : null" class="form-control"
+              id="documento_tecnico" name="documento_tecnico" placeholder="CC, DI, RC, CE" required="">
+          </div><br>
+          <div class="alert alert-danger" *ngIf="alertValidacion" #alert id=""
+            class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlertGuardar()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Error! </strong> El documento ingresado no corresponde a ningun tecnico registrado en el sistema.
+          </div>
+        </div>
+
+        <h6 class="mb-3">Fecha de inicio y finalizacion del servicio.</h6>
+        <div class="row">
+
+          <div class="col-md-6 mb-1">
+            <div class="form-group row">
+              <label for="example-datetime-local-input" class="col-4 col-form-label">Inicio</label>
+              <div class="col-8">
+                <input class="form-control" id="" [(ngModel)]="fechaInicio" [readonly]="desactivarInputs" name="fechaInicio" type="datetime-local"  value="2000-01-01 00:00:00"
+                  id="example-datetime-local-input">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-1">
+            <div class="form-group row">
+              <label for="example-datetime-local-input" class="col-4 col-form-label">Finalizacion</label>
+              <div class="col-8">
+                <input class="form-control" id="" [(ngModel)]="fechaFin"  [readonly]="desactivarInputs" name="fechaFin" type="datetime-local"  value="2000-01-01 00:00:00"
+                  id="example-datetime-local-input">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-1">
+            <button class="btn btn-primary btn-lg btn-block" [disabled]="desactivarBoton" (click)="registrarServicio()" >
+              <li class="fa fa-save"></li>&nbsp;Servicio</button>
+
+          </div>
+        </div>
+
+
+        <hr class="mb-4">
+
+        <div id="smg">
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
